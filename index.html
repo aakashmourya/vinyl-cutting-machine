@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Plane</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+  </head>
+
+  <body>
+    <div
+      id="plane"
+      style="
+        margin: 0px auto;
+        width: 100%;
+        height: 500px;
+        border: 1px solid red;
+        position: relative;
+      "
+    >
+      <i
+        id="pen"
+        style="color: red; position: absolute; top: 0px; left: 0px"
+        class="fas fa-pen"
+      ></i>
+      <div
+        id="yline"
+        style="
+          width: 100%;
+          height: 1px;
+          background: blue;
+          position: absolute;
+          top: 0px;
+          left: 0px;
+        "
+      ></div>
+      <div
+        id="xline"
+        style="
+          width: 1px;
+          height: 100%;
+          background: green;
+          position: absolute;
+          top: 0px;
+          left: 0px;
+        "
+      ></div>
+    </div>
+
+    <script>
+      let Adata = [
+        {
+          x: 38,
+          y: 0,
+          p: 1,
+        },
+        {
+          x: 53,
+          y: 0,
+          p: 1,
+        },
+        {
+          x: 94,
+          y: 100,
+          p: 1,
+        },
+        {
+          x: 79,
+          y: 100,
+          p: 1,
+        },
+        {
+          x: 67,
+          y: 70,
+          p: 1,
+        },
+        {
+          x: 25,
+          y: 70,
+          p: 1,
+        },
+        {
+          x: 14,
+          y: 100,
+          p: 1,
+        },
+        {
+          x: 0,
+          y: 100,
+          p: 1,
+        },
+        {
+          x: 38,
+          y: 0,
+          p: 0,
+        },
+        {
+          x: 46,
+          y: 10,
+          p: 1,
+        },
+        {
+          x: 63,
+          y: 59,
+          p: 1,
+        },
+        {
+          x: 29,
+          y: 59,
+          p: 1,
+        },
+        {
+          x: 46,
+          y: 10,
+          p: 0,
+        },
+      ];
+
+      let Bdata = [
+        {
+          x: 0,
+          y: 0,
+          p: 1,
+        },
+        {
+          x: 40,
+          y: 0,
+          p: 1,
+        },
+        {
+          x: 51,
+          y: 2,
+          p: 1,
+        },
+        {
+          x: 60,
+          y: 6,
+          p: 1,
+        },
+        {
+          x: 68,
+          y: 15,
+          p: 1,
+        },
+        {
+          x: 72,
+          y: 24,
+          p: 1,
+        },
+        {
+          x: 69,
+          y: 35,
+          p: 1,
+        },
+        {
+          x: 63,
+          y: 43,
+          p: 1,
+        },
+        {
+          x: 58,
+          y: 47,
+          p: 1,
+        },
+        {
+          x: 64,
+          y: 49,
+          p: 1,
+        },
+        {
+          x: 70,
+          y: 54,
+          p: 1,
+        },
+        {
+          x: 74,
+          y: 62,
+          p: 1,
+        },
+        {
+          x: 77,
+          y: 70,
+          p: 1,
+        },
+        {
+          x: 75,
+          y: 80,
+          p: 1,
+        },
+        {
+          x: 70,
+          y: 90,
+          p: 1,
+        },
+        {
+          x: 63,
+          y: 95,
+          p: 1,
+        },
+        {
+          x: 53,
+          y: 98,
+          p: 1,
+        },
+        {
+          x: 46,
+          y: 100,
+          p: 1,
+        },
+        {
+          x: 0,
+          y: 100,
+          p: 1,
+        },
+        {
+          x: 0,
+          y: 0,
+          p: 0,
+        },
+
+        {
+          x: 13,
+          y: 12,
+          p: 1,
+        },
+        {
+          x: 35,
+          y: 12,
+          p: 1,
+        },
+        {
+          x: 43,
+          y: 13,
+          p: 1,
+        },
+        {
+          x: 51,
+          y: 15,
+          p: 1,
+        },
+        {
+          x: 56,
+          y: 18,
+          p: 1,
+        },
+        {
+          x: 57,
+          y: 25,
+          p: 1,
+        },
+        {
+          x: 58,
+          y: 30,
+          p: 1,
+        },
+        {
+          x: 56,
+          y: 36,
+          p: 1,
+        },
+        {
+          x: 50,
+          y: 41,
+          p: 1,
+        },
+        {
+          x: 45,
+          y: 42,
+          p: 1,
+        },
+        {
+          x: 40,
+          y: 42,
+          p: 1,
+        },
+        {
+          x: 13,
+          y: 42,
+          p: 1,
+        },
+        {
+          x: 13,
+          y: 12,
+          p: 0,
+        },
+        {
+          x: 13,
+          y: 54,
+          p: 1,
+        },
+        {
+          x: 41,
+          y: 54,
+          p: 1,
+        },
+        {
+          x: 49,
+          y: 55,
+          p: 1,
+        },
+        {
+          x: 56,
+          y: 58,
+          p: 1,
+        },
+        {
+          x: 60,
+          y: 63,
+          p: 1,
+        },
+        {
+          x: 61,
+          y: 66,
+          p: 1,
+        },
+        {
+          x: 62,
+          y: 71,
+          p: 1,
+        },
+        {
+          x: 61,
+          y: 77,
+          p: 1,
+        },
+        {
+          x: 58,
+          y: 82,
+          p: 1,
+        },
+        {
+          x: 53,
+          y: 86,
+          p: 1,
+        },
+        {
+          x: 47,
+          y: 88,
+          p: 1,
+        },
+        {
+          x: 44,
+          y: 88,
+          p: 1,
+        },
+        {
+          x: 13,
+          y: 88,
+          p: 1,
+        },
+        {
+          x: 13,
+          y: 54,
+          p: 0,
+        },
+      ];
+
+      let plane = $("#plane");
+      let yline = $("#yline");
+      let xline = $("#xline");
+      let pen = $("#pen");
+
+      var time = 0;
+      var delay = 6;
+      function DDA(X0, Y0, X1, Y1, p, last) {
+        // calculate dx & dy
+        var dx = X1 - X0;
+        var dy = Y1 - Y0;
+        // calculate steps required for generating pixels
+        var steps = Math.abs(dx) > Math.abs(dy) ? Math.abs(dx) : Math.abs(dy);
+        // calculate increment in x & y for each steps
+        var Xinc = dx / steps;
+        var Yinc = dy / steps;
+        // Put pixel for each step
+        var X = X0;
+        var Y = Y0;
+        let interval = setInterval(printxy, delay);
+        let i = 0;
+        function printxy() {
+          if (i == steps) {
+            clearInterval(interval);
+            if (last) {
+              resetpen();
+            }
+            return;
+          }
+
+          yline.css("top", Y + "px");
+          xline.css("left", X + "px");
+          pen.css("top", Y - 14 + "px");
+          pen.css("left", X + "px");
+          if (p) {
+            plane.append(
+              `<div style="background:black;position: absolute;top:${Y}px;left:${X}px;width:1px;height: 1px;"></div>`
+            );
+          }
+          X += Xinc; // increment in x at each step
+          Y += Yinc;
+          i++;
+        }
+      }
+
+      function DrawShape(data, offx = 0, offy = 0, end = 0) {
+        var len = data.length;
+        var initial = data[0];
+        var last = 0;
+        for (j = 1; j < len; j++) {
+          var x1 = initial.x + offx;
+          var y1 = initial.y + offy;
+          var x2 = data[j].x + offx;
+          var y2 = data[j].y + offy;
+          var p = initial.p;
+
+          //console.log(sdel,del);
+          //DDA(x1, y1, x2, y2,10)
+          if (j == len - 1) {
+            last = end;
+          }
+          setTimeout(DDA, time, x1, y1, x2, y2, p, last);
+
+          var dx = x2 - x1;
+          var dy = y2 - y1;
+          // calculate steps required for generating pixels
+          var steps = Math.abs(dx) > Math.abs(dy) ? Math.abs(dx) : Math.abs(dy);
+          time = steps * delay + time;
+
+          initial = data[j];
+        }
+      }
+
+      function resetpen() {
+        yline.css("top", 0 + "px");
+        xline.css("left", 0 + "px");
+        pen.css("top", 0 + "px");
+        pen.css("left", 0 + "px");
+      }
+
+      DrawShape(Adata, 10, 10);
+      DrawShape(Bdata, 110, 10, 1);
+    </script>
+  </body>
+</html>
